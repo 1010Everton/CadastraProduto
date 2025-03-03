@@ -1,38 +1,45 @@
 package org.example.Conecta_banco;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "produtos")
+@Table(name = "produto")
 public class Conection {
     @Id
-    @GeneratedValue()
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String nome;
-    private double codigo_barra;
+    private String nome_produto;
+    private double codigo_de_barra;
+    public Conection() {
+    }
 
     public Conection(String nome, double codigo_barra) {
-        this.nome = nome;
-        this.codigo_barra = codigo_barra;
+        this.nome_produto = nome;
+        this.codigo_de_barra = codigo_barra;
     }
 
-    public String getNome() {
-        return nome;
+    public long getId() {
+        return id;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public double getCodigo_barra() {
-        return codigo_barra;
+    public String getNome_produto() {
+        return nome_produto;
     }
 
-    public void setCodigo_barra(double codigo_barra) {
-        this.codigo_barra = codigo_barra;
+    public void setNome_produto(String nome) {
+        this.nome_produto = nome;
+    }
+
+    public double getCodigo_de_barra() {
+        return codigo_de_barra;
+    }
+
+
+    public void setCodigo_de_barra(double codigo_barra) {
+        this.codigo_de_barra = codigo_barra;
     }
 }

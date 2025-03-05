@@ -6,21 +6,22 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-public class Alterar {
-    public void altera(){
+public class Delete {
+    public void delete(){
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("produtos");
         EntityManager em = emf.createEntityManager();
 
-        em.getTransaction().begin();
-        Conection conexao = em.find(Conection.class,1L);
-        em.detach(conexao);
-        conexao.setCodigo_de_barra(123124);
-        conexao.setNome_produto("mostarda");
 
-        em.merge(conexao);
-        em.getTransaction().commit();
+        Conection conexao = em.find(Conection.class, 1L);
 
+        if (conexao!=null){
+            em.getTransaction().begin();
+            em.remove(conexao);
+            em.getTransaction().commit();
+        }
         em.close();
         emf.close();
+        }
     }
-}
+
+
